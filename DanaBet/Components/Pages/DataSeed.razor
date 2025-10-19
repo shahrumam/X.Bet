@@ -1,0 +1,75 @@
+﻿@page "/Seed"
+@using DanaBet.DBModel
+@using DanaBet.Applications
+@using Microsoft.EntityFrameworkCore
+@using System.Data
+
+@rendermode InteractiveServer
+
+@inject ApplicationDbContext DbContext
+
+<h3>Seed Page</h3>
+<p>@message</p>
+
+@code {
+    private string message = "در حال پردازش...";
+
+    protected override void OnInitialized()
+    {
+        try
+        {
+            DanaBet.DBModel.Game game1 = new DanaBet.DBModel.Game
+                {
+                    Id = 1,
+                    Name = "Crash",
+                    Version = "Battel",
+                    IsActive = true
+                };
+
+            DanaBet.DBModel.Game game2 = new DanaBet.DBModel.Game
+                {
+                    Id = 2,
+                    Name = "Fifa",
+                    IsActive = true
+                };
+            DanaBet.DBModel.Game game3 = new DanaBet.DBModel.Game
+                {
+                    Id = 3,
+                    Name = "Tekken",
+                    IsActive = true
+                };
+            DanaBet.DBModel.Game game4 = new DanaBet.DBModel.Game
+                {
+                    Id = 4,
+                    Name = "دارت",
+                    IsActive = true
+                };
+
+            var gamesToSeed = new List<DanaBet.DBModel.Game> { game1, game2, game3, game4 };
+
+            var existingGameIds = DbContext.TBL_Games
+                .Where(g => g.Id == game1.Id || g.Id == game2.Id || g.Id == game3.Id || g.Id == game4.Id)
+                .Select(g => g.Id)
+                .ToHashSet();
+
+            var newGamesToAdd = gamesToSeed
+                .Where(g => !existingGameIds.Contains(g.Id))
+                .ToList();
+            if (newGamesToAdd.Any())
+            {
+                DbContext.TBL_Games.AddRange(newGamesToAdd);
+                DbContext.SaveChanges();
+
+                message = $"تعداد {newGamesToAdd.Count} بازی جدید با موفقیت اضافه شد.";
+            }
+            else
+            {
+                message = "تمام بازی‌ها از قبل در دیتابیس موجود بودند.";
+            }
+        }
+        catch (Exception ex)
+        {
+            message = $"خطایی رخ داد: {ex.Message}";
+        }
+    }
+}

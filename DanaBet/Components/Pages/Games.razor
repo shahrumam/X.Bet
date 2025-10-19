@@ -1,0 +1,46 @@
+﻿@page "/games"
+@using DanaBet.DBModel
+@using DanaBet.Applications
+@using Microsoft.EntityFrameworkCore
+@using System.Data
+
+@rendermode InteractiveServer
+
+@inject ApplicationDbContext DbContext
+
+@if (gamesList == null)
+{
+    <p><em>در حال بارگذاری...</em></p>
+}
+else if (!gamesList.Any())
+{
+    <p><em>No games found in the database.</em></p>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            @foreach (var game in gamesList)
+            {
+                <div class="col-xl-6 col-md-6 col-6 mb-3">
+                    <a href="/Leagues/@game.Id" class="text-decoration-none text-dark">
+                        <div class="border rounded p-2">
+                            @game.Name
+                            @if (!String.IsNullOrEmpty(game.Version)) { <text> - </text> } @game.Version
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+
+@code {
+    private List<DanaBet.DBModel.Game> gamesList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        gamesList = await DbContext.TBL_Games.ToListAsync();
+    }
+}
