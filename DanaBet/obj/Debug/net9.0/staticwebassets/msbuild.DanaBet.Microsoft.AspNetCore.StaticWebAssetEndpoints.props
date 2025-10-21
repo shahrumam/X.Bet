@@ -16,13 +16,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\DanaBet.okliqupnhs.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-uB/YwY8OR5dBobPeeMOZm0FUPc7SZfGEirsmUgMHZZk="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"5961"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022uB/YwY8OR5dBobPeeMOZm0FUPc7SZfGEirsmUgMHZZk=\u0022"},{"Name":"Last-Modified","Value":"Sun, 19 Oct 2025 17:49:51 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"5961"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022uB/YwY8OR5dBobPeeMOZm0FUPc7SZfGEirsmUgMHZZk=\u0022"},{"Name":"Last-Modified","Value":"Mon, 20 Oct 2025 19:22:55 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/DanaBet/DanaBet.okliqupnhs.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\DanaBet.okliqupnhs.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"okliqupnhs"},{"Name":"integrity","Value":"sha256-uB/YwY8OR5dBobPeeMOZm0FUPc7SZfGEirsmUgMHZZk="},{"Name":"label","Value":"_content/DanaBet/DanaBet.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5961"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022uB/YwY8OR5dBobPeeMOZm0FUPc7SZfGEirsmUgMHZZk=\u0022"},{"Name":"Last-Modified","Value":"Sun, 19 Oct 2025 17:49:51 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5961"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022uB/YwY8OR5dBobPeeMOZm0FUPc7SZfGEirsmUgMHZZk=\u0022"},{"Name":"Last-Modified","Value":"Mon, 20 Oct 2025 19:22:55 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/DanaBet/favicon.ifv42okdf2.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.png'))</AssetFile>
@@ -35,6 +35,54 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1148"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u00224mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=\u0022"},{"Name":"Last-Modified","Value":"Sun, 19 Oct 2025 16:22:00 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/DanaBet/Images/CTR.amd17mzufs.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\CTR.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"amd17mzufs"},{"Name":"integrity","Value":"sha256-MiqoQwWl/q9iDODK8aSNZeMgmMubCHhmXjSpRXhN2lE="},{"Name":"label","Value":"_content/DanaBet/Images/CTR.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"60148"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022MiqoQwWl/q9iDODK8aSNZeMgmMubCHhmXjSpRXhN2lE=\u0022"},{"Name":"Last-Modified","Value":"Mon, 20 Oct 2025 16:29:17 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/DanaBet/Images/CTR.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\CTR.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-MiqoQwWl/q9iDODK8aSNZeMgmMubCHhmXjSpRXhN2lE="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"60148"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022MiqoQwWl/q9iDODK8aSNZeMgmMubCHhmXjSpRXhN2lE=\u0022"},{"Name":"Last-Modified","Value":"Mon, 20 Oct 2025 16:29:17 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/DanaBet/Images/Dart.cq5hnyomep.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Dart.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"cq5hnyomep"},{"Name":"integrity","Value":"sha256-RHZIfRhXzcwYzHAHW9r3AImI5FO0B60IvPZRvrWzFVI="},{"Name":"label","Value":"_content/DanaBet/Images/Dart.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"162628"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022RHZIfRhXzcwYzHAHW9r3AImI5FO0B60IvPZRvrWzFVI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 20 Oct 2025 16:26:36 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/DanaBet/Images/Dart.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Dart.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-RHZIfRhXzcwYzHAHW9r3AImI5FO0B60IvPZRvrWzFVI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"162628"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022RHZIfRhXzcwYzHAHW9r3AImI5FO0B60IvPZRvrWzFVI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 20 Oct 2025 16:26:36 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/DanaBet/Images/Fifa.5ix7mus0iz.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Fifa.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"5ix7mus0iz"},{"Name":"integrity","Value":"sha256-o4wTAR61EIzgAfvxHZy94rYBaDR/tuwKIap69X\u002B22v0="},{"Name":"label","Value":"_content/DanaBet/Images/Fifa.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"138696"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022o4wTAR61EIzgAfvxHZy94rYBaDR/tuwKIap69X\u002B22v0=\u0022"},{"Name":"Last-Modified","Value":"Mon, 20 Oct 2025 16:28:20 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/DanaBet/Images/Fifa.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Fifa.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-o4wTAR61EIzgAfvxHZy94rYBaDR/tuwKIap69X\u002B22v0="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"138696"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022o4wTAR61EIzgAfvxHZy94rYBaDR/tuwKIap69X\u002B22v0=\u0022"},{"Name":"Last-Modified","Value":"Mon, 20 Oct 2025 16:28:20 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/DanaBet/Images/Tekken.mgjxl24gob.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Tekken.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"mgjxl24gob"},{"Name":"integrity","Value":"sha256-OmJUC3IEu6\u002B\u002BxBDipAPiveoJfLhz7Zv6N4RwgG6YR1E="},{"Name":"label","Value":"_content/DanaBet/Images/Tekken.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"73465"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OmJUC3IEu6\u002B\u002BxBDipAPiveoJfLhz7Zv6N4RwgG6YR1E=\u0022"},{"Name":"Last-Modified","Value":"Mon, 20 Oct 2025 16:27:25 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/DanaBet/Images/Tekken.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Tekken.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-OmJUC3IEu6\u002B\u002BxBDipAPiveoJfLhz7Zv6N4RwgG6YR1E="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"73465"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022OmJUC3IEu6\u002B\u002BxBDipAPiveoJfLhz7Zv6N4RwgG6YR1E=\u0022"},{"Name":"Last-Modified","Value":"Mon, 20 Oct 2025 16:27:25 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/DanaBet/lib/bootstrap/dist/css/bootstrap-grid.bqjiyaj88i.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap-grid.css'))</AssetFile>

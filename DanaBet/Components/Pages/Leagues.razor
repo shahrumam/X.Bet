@@ -1,0 +1,66 @@
+﻿@page "/leagues/{gameId:int}"
+@using DanaBet.DBModel
+@using DanaBet.DBData
+@using Microsoft.EntityFrameworkCore
+@using System.Data
+@inject NavigationManager NavigationManager
+
+@rendermode InteractiveServer
+
+@inject ApplicationDbContext DbContext
+
+@if (leaguesList == null)
+{
+    <p><em>در حال بارگذاری...</em></p>
+}
+else if (!leaguesList.Any())
+{
+    <p><em>هیچ لیگ فعالی یافت نشد.</em></p>
+}
+else
+{
+    <div class="container">
+        <div class="row mt-5">
+            <div class="table-responsive">
+
+                <table class="table table-striped table-hover table-border">
+                    <thead>
+                        <tr>
+                            <th>نام لیگ</th>
+                            <th>تاریخ شروع</th>
+                            <th>تاریخ پایان</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var league in leaguesList)
+                        {
+                            <tr @onclick="() => GoToLeague(league.Id)" style="cursor: pointer;">
+                                <td>@league.Name</td>
+                                <td>@league.StartDate.Value.ToString("yyyy/MM/dd")</td>
+                                <td>@league.EndDate.Value.ToString("yyyy/MM/dd")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    public int gameId { get; set; }
+
+    private List<DanaBet.DBModel.League> leaguesList;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        leaguesList = await DbContext.TBL_Leagues.Where(x => x.IsActive && DateTime.Now >= x.StartDate && DateTime.Now <= x.EndDate && x.GameId == gameId).ToListAsync();
+    }
+    private void GoToLeague(int leagueId)
+    {
+        NavigationManager.NavigateTo($"/league-details/{leagueId}");
+    }
+}

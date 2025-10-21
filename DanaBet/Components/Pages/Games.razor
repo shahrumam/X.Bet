@@ -1,11 +1,13 @@
 ﻿@page "/games"
 @using DanaBet.DBModel
-@using DanaBet.Applications
+@using DanaBet.DBData
 @using Microsoft.EntityFrameworkCore
 @using System.Data
 
 @rendermode InteractiveServer
 
+
+@inject NavigationManager NavigationManager
 @inject ApplicationDbContext DbContext
 
 @if (gamesList == null)
@@ -19,14 +21,27 @@ else if (!gamesList.Any())
 else
 {
     <div class="container">
-        <div class="row">
+        <div class="row mt-5">
             @foreach (var game in gamesList)
             {
-                <div class="col-xl-6 col-md-6 col-6 mb-3">
+                <div class="col-xl-6 col-md-6 col-6 mb-5">
                     <a href="/Leagues/@game.Id" class="text-decoration-none text-dark">
-                        <div class="border rounded p-2">
-                            @game.Name
-                            @if (!String.IsNullOrEmpty(game.Version)) { <text> - </text> } @game.Version
+
+                        <div class="border rounded p-2 d-flex align-items-center">
+
+                            <img src="@game.ImageUrl"
+                                 style="width: 75px;
+                                        height: 75px;
+                                        object-fit: cover;
+                                        border-radius: 50%;" />
+
+                            <div class="ms-3 flex-grow-1 text-end fw-bold">
+                                @game.Name
+                                @if (!String.IsNullOrEmpty(game.Version))
+                                {
+                                    <text> - </text>
+                                } @game.Version
+                            </div>
                         </div>
                     </a>
                 </div>

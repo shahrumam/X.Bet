@@ -1,0 +1,63 @@
+﻿@page "/admin-games"
+@using DanaBet.DBModel
+@using DanaBet.DBData
+@using Microsoft.EntityFrameworkCore
+@using System.Data
+
+@rendermode InteractiveServer
+
+
+@inject NavigationManager NavigationManager
+@inject ApplicationDbContext DbContext
+
+
+@if (gamesList == null)
+{
+    <p><em>در حال بارگذاری...</em></p>
+}
+else if (!gamesList.Any())
+{
+    <p><em>No games found in the database.</em></p>
+}
+else
+{
+    <div class="container">
+        <div class="row mt-5">
+            <div class="table-responsive">
+
+                <table class="table table-striped table-hover table-border">
+                    <thead>
+                        <tr>
+                            <th>نام لیگ</th>
+                            <th>وضعیت</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var game in gamesList)
+                        {
+                            <tr @onclick="() => GoToLeague(game.Id)" style="cursor: pointer;">
+                                <td>@game.Name</td>
+                                <td>@game.IsActive</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+
+@code {
+    private List<DanaBet.DBModel.Game> gamesList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        gamesList = await DbContext.TBL_Games.ToListAsync();
+    }
+    private void GoToLeague(int leagueId)
+    {
+        NavigationManager.NavigateTo($"/admin-league/{leagueId}");
+    }
+}

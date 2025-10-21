@@ -1,6 +1,6 @@
 ﻿namespace DanaBet.DBModel
 {
-    public class LeagueGroups
+    public class LeagueGroup
     {
         public int Id { get; set; }
         public int Name { get; set; }

@@ -1,0 +1,72 @@
+﻿@page "/login"
+@using DanaBet.DBModel
+@using DanaBet.DBData
+@using Microsoft.EntityFrameworkCore
+@using System.Data
+
+@rendermode InteractiveServer
+
+@inject ApplicationDbContext DbContext
+@inject NavigationManager NavigationManager
+
+<h3>صفحه ورود</h3>
+<div class="card" style="max-width: 400px;">
+    <div class="card-body">
+        <div class="form-group mb-2">
+            <label>نام کاربری:</label>
+            <input class="form-control" @bind="usernameInput" />
+        </div>
+        <div class="form-group mb-3">
+            <label>رمز عبور:</label>
+            <input type="password" class="form-control" @bind="passwordInput" />
+        </div>
+
+        <button class="btn btn-primary" @onclick="HandleLogin">ورود</button>
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="alert alert-danger mt-3">@errorMessage</div>
+        }
+        @if (loginSuccess)
+        {
+            <div class="alert alert-success mt-3">ورود با موفقیت انجام شد!</div>
+        }
+    </div>
+</div>
+
+
+@code {
+    private string usernameInput;
+    private string passwordInput;
+    private string errorMessage;
+    private bool loginSuccess = false;
+
+    private async Task HandleLogin()
+    {
+        errorMessage = string.Empty;
+        loginSuccess = false;
+
+        if (string.IsNullOrEmpty(usernameInput) || string.IsNullOrEmpty(passwordInput))
+        {
+            errorMessage = "نام کاربری و رمز عبور نباید خالی باشند.";
+            return;
+        }
+
+        // جستجو در دیتابیس
+        // !! به هشدار امنیتی مراجعه کنید !!
+        var user = await DbContext.TBL_Users
+            .FirstOrDefaultAsync(u => u.Username == usernameInput && u.Password == passwordInput);
+
+        if (user != null)
+        {
+            loginSuccess = true;
+ 
+            await Task.Delay(2000);
+            NavigationManager.NavigateTo("/DataSeed");
+        }
+        else
+        {
+            errorMessage = "نام کاربری یا رمز عبور اشتباه است.";
+        }
+    }
+}

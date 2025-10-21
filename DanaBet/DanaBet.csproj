@@ -22,8 +22,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DBData\" />
+    <Folder Include="Applications\" />
     <Folder Include="ViewModel\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Components\Pages\LoginUser.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
   </ItemGroup>
 
 </Project>

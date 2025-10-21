@@ -1,0 +1,56 @@
+﻿@page "/league-details/{leagueId:int}"
+@using DanaBet.DBModel
+@using DanaBet.DBData
+@using Microsoft.EntityFrameworkCore
+@using System.Data
+
+@rendermode InteractiveServer
+
+@inject ApplicationDbContext DbContext
+
+@if (userLeagueList == null)
+{
+    <p><em>در حال بارگذاری...</em></p>
+}
+else if (!userLeagueList.Any())
+{
+    <p><em>اطلاعات لیگ یافت نشد.</em></p>
+}
+else
+{
+    <div class="container">
+        <div class="row mt-5">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-border">
+                    <thead>
+                        <tr>
+                            <th>شرکت کنندگان</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in userLeagueList)
+                        {
+                            <tr>
+                                <td>@user.Firstname @user.Lastname</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    public int leagueId { get; set; }
+
+    private List<DanaBet.DBModel.LeagueUser> userLeagueList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        userLeagueList = await DbContext.TBL_LeagueUsers.Where(x=>x.LeagueId == leagueId).ToListAsync();
+    }
+}

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DanaBet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef9142b885cfa45e9763b11418b9e7c1ddadf942")]
 [assembly: System.Reflection.AssemblyProductAttribute("DanaBet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DanaBet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

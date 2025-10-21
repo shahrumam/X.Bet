@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Sites\\Applications\\DanaBet\\DanaBet\\DanaBet\\DanaBet.csproj": {}
+    "D:\\Sites\\Applications\\DanaBet\\DanaBet\\DanaBet.csproj": {}
   },
   "projects": {
-    "D:\\Sites\\Applications\\DanaBet\\DanaBet\\DanaBet\\DanaBet.csproj": {
+    "D:\\Sites\\Applications\\DanaBet\\DanaBet\\DanaBet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Sites\\Applications\\DanaBet\\DanaBet\\DanaBet\\DanaBet.csproj",
+        "projectUniqueName": "D:\\Sites\\Applications\\DanaBet\\DanaBet\\DanaBet.csproj",
         "projectName": "DanaBet",
-        "projectPath": "D:\\Sites\\Applications\\DanaBet\\DanaBet\\DanaBet\\DanaBet.csproj",
+        "projectPath": "D:\\Sites\\Applications\\DanaBet\\DanaBet\\DanaBet.csproj",
         "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
-        "outputPath": "D:\\Sites\\Applications\\DanaBet\\DanaBet\\DanaBet\\obj\\",
+        "outputPath": "D:\\Sites\\Applications\\DanaBet\\DanaBet\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

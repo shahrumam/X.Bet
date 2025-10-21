@@ -4,7 +4,8 @@
     {
         public int Id { get; set; }
         public int LeagueGroupId { get; set; }
-        public int UserId { get; set; }
-        public virtual LeagueGroups? LeagueGroups { get; set; }
+        public int LeagueUserId { get; set; }
+        public virtual LeagueGroup? LeagueGroups { get; set; }
+        public LeagueUser? LeagueUser { get; set; }
     }
 }

@@ -1,5 +1,5 @@
-using DanaBet.Applications;
 using DanaBet.Components;
+using DanaBet.DBData;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

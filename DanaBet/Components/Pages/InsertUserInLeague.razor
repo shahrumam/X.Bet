@@ -1,0 +1,166 @@
+﻿@page "/insert-user-in-league/{LeagueId:int}"
+
+@using DanaBet.DBModel
+@using DanaBet.DBData
+@using Microsoft.EntityFrameworkCore
+@using System.Data
+@using System.ComponentModel.DataAnnotations
+
+@inject ApplicationDbContext DbContext
+@inject NavigationManager NavigationManager
+
+<div class="row">
+    <div class="col-lg-6 col-xs-12">
+        <h3>افزودن کاربر به لیگ (لیگ شماره: @LeagueId)</h3>
+
+        <EditForm @key="@formKey" Model="@newUser" OnValidSubmit="@HandleValidSubmit" FormName="MyUniqueFormName">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="mb-3">
+                        <label class="form-label">نام:</label>
+                        <InputText class="form-control" @bind-Value="newUser.Firstname" @bind-Value:event="oninput" />
+                        <ValidationMessage For="@(() => newUser.Firstname)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">نام خانوادگی:</label>
+                        <InputText class="form-control" @bind-Value="newUser.Lastname" @bind-Value:event="oninput" />
+                        <ValidationMessage For="@(() => newUser.Lastname)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">موبایل:</label>
+                        <InputText class="form-control" @bind-Value="newUser.Mobile" @bind-Value:event="oninput" />
+                        <ValidationMessage For="@(() => newUser.Mobile)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">شناسه لیگ (LeagueId):</label>
+                        <InputNumber class="form-control" @bind-Value="newUser.LeagueId" readonly />
+                        <ValidationMessage For="@(() => newUser.LeagueId)" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">ثبت کاربر</button>
+
+                    @if (!string.IsNullOrEmpty(successMessage))
+                    {
+                        <div class="alert alert-success mt-3">@successMessage</div>
+                    }
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div class="alert alert-danger mt-3">@errorMessage</div>
+                    }
+
+                </div>
+            </div>
+        </EditForm>
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-border">
+                <thead>
+                    <tr>
+                        <th>شرکت کنندگان (لیگ @LeagueId)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (userLeagueList == null)
+                    {
+                        <tr><td>در حال بارگذاری...</td></tr>
+                    }
+                    else if (!userLeagueList.Any())
+                    {
+                        <tr><td>هنوز کاربری در این لیگ ثبت نشده است.</td></tr>
+                    }
+                    else
+                    {
+                        @foreach (var user in userLeagueList)
+                        {
+                            <tr>
+                                <td>@user.Firstname @user.Lastname</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int LeagueId { get; set; }
+
+    // تغییر کلیدی 1: مقداردهی اولیه لیست برای جلوگیری از null بودن
+    private List<LeagueUser> userLeagueList = new();
+
+    // متغیر برای ریست کردن فرم
+    private Guid formKey = Guid.NewGuid();
+
+    // تغییر کلیدی 2: مدل در OnInitialized مقداردهی می‌شود
+    private LeagueUser newUser;
+
+    private string successMessage;
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // تغییر کلیدی 3: مدل را اینجا می‌سازیم تا LeagueId را از ابتدا داشته باشد
+        InitializeNewUser();
+
+        // فقط کاربرانی را می‌خوانیم که مربوط به همین لیگ هستند
+        userLeagueList = await DbContext.TBL_LeagueUsers
+                                     .Where(u => u.LeagueId == LeagueId)
+                                     .ToListAsync();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        successMessage = string.Empty;
+        errorMessage = string.Empty;
+
+        try
+        {
+            // 1. ذخیره در دیتابیس
+            DbContext.TBL_LeagueUsers.Add(newUser);
+            await DbContext.SaveChangesAsync();
+
+            // 2. نمایش پیغام موفقیت
+            successMessage = $"کاربر {newUser.Firstname} {newUser.Lastname} با موفقیت ثبت شد.";
+
+            // 3. کاربر جدید را به لیست محلی اضافه می‌کنیم تا جدول آپدیت شود
+            //    (مهم: یک کپی جدید از آبجکت را اضافه می‌کنیم)
+            userLeagueList.Add(new LeagueUser
+                {
+                    Id = newUser.Id,
+                    Firstname = newUser.Firstname,
+                    Lastname = newUser.Lastname,
+                    Mobile = newUser.Mobile,
+                    LeagueId = newUser.LeagueId
+                });
+
+            // 4. فرم را برای ثبت کاربر بعدی ریست می‌کنیم
+            formKey = Guid.NewGuid(); // این باعث می‌شود EditForm دوباره ساخته شود
+            InitializeNewUser(); // مدل را برای فرم جدید آماده می‌کنیم
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"خطا در زمان ثبت: {ex.Message}";
+        }
+    }
+
+    // یک متد کمکی برای ساختن کاربر جدید که LeagueId درست را ست می‌کند
+    private void InitializeNewUser()
+    {
+        newUser = new LeagueUser
+            {
+                LeagueId = this.LeagueId // LeagueId را برای کاربر بعدی حفظ می‌کنیم
+                                         // Firstname و Lastname به لطف تغییر در مدل، خودکار string.Empty هستند
+            };
+    }
+}

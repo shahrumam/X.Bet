@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "af5ilcaZ98s=",
+  "dgSpecHash": "CoMWl4kSIWs=",
   "success": true,
-  "projectFilePath": "D:\\Sites\\Applications\\DanaBet\\DanaBet\\DanaBet\\DanaBet.csproj",
+  "projectFilePath": "D:\\Sites\\Applications\\DanaBet\\DanaBet\\DanaBet.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Windows\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Windows\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
