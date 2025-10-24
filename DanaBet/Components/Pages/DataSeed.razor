@@ -155,7 +155,7 @@
         {
             Id = 1,
             Name = "لیگ طلوع شیران",
-            GameId = 1, 
+            GameId = 1,
             StartDate = DateTime.Now.Date,
             EndDate = DateTime.Now.Date.AddDays(7),
             MaxUserCount = null,
@@ -193,6 +193,109 @@
             {
                 await DbContext.SaveChangesAsync();
                 message = $"عملیات موفق: {addedCount} لیگ جدید اضافه شد، {updatedCount} لیگ به‌روزرسانی شد.";
+            }
+            else
+            {
+                message = "دیتابیس از قبل به‌روز بود. هیچ تغییری لازم نبود.";
+            }
+        }
+        catch (Exception ex)
+        {
+            message = $"خطایی رخ داد: {ex.Message}";
+        }
+        try
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+     .UseSqlite("Data Source=yourdatabase.db") // مسیر دیتابیس خودت را بگذار
+     .Options;
+
+            using (var context = new ApplicationDbContext(options))
+            {
+                // خالی کردن جدول
+                context.Database.ExecuteSqlRaw("DELETE FROM LeagueUsers;");
+
+                // ریست کردن AUTOINCREMENT
+                context.Database.ExecuteSqlRaw("DELETE FROM sqlite_sequence WHERE name='LeagueUsers';");
+
+                // بازیابی فضای دیتابیس (اختیاری)
+                context.Database.ExecuteSqlRaw("VACUUM;");
+            }
+            // 1. تعریف لیست کاربران در لیگ‌هایی که می‌خواهیم در دیتابیس باشند
+            var userLeaguesToSeed = new List<DanaBet.DBModel.LeagueUser>
+                {
+                    new LeagueUser
+                    {
+                    Id = 1,
+                    LeagueId = 1,
+                    Firstname = "شهرام",
+                    Lastname = "امیرحسینی",
+                    Mobile = string.Empty
+                    },
+                                        new LeagueUser
+                    {
+                    Id = 2,
+                    LeagueId = 1,
+                    Firstname = "بهروز",
+                    Lastname = "تافته",
+                    Mobile = string.Empty
+                    },
+                                        new LeagueUser
+                    {
+                    Id = 3,
+                    LeagueId = 1,
+                    Firstname = "مجتبی",
+                    Lastname = "حقیقت",
+                    Mobile = string.Empty
+                    },
+                                        new LeagueUser
+                    {
+                    Id = 4,
+                    LeagueId = 1,
+                    Firstname = "مهرداد",
+                    Lastname = "نصیری",
+                    Mobile = string.Empty
+                    },
+                                        new LeagueUser
+                    {
+                    Id = 5,
+                    LeagueId = 1,
+                    Firstname = "یاشار",
+                    Lastname = "صفرخانلو",
+                    Mobile = string.Empty
+                    }
+
+                };
+
+            int addedCount = 0;
+            int updatedCount = 0;
+
+            // 2. پیمایش لیست و بررسی تک به تک آیتم‌ها
+            foreach (var uleague in userLeaguesToSeed)
+            {
+                // جستجوی لیگ موجود با استفاده از کلید اصلی (Id)
+                var existingLeague = await DbContext.TBL_Leagues.FindAsync(uleague.Id);
+
+                if (existingLeague == null)
+                {
+                    // 3. اگر وجود نداشت (جدید بود): آن را برای افزودن نشانه‌گذاری کن
+                    await DbContext.TBL_LeagueUsers.AddAsync(uleague);
+                    addedCount++;
+                }
+                else
+                {
+                    // 4. اگر وجود داشت (قدیمی بود): مقادیر آن را به‌روزرسانی کن
+                    // SetValues تمام پراپرتی‌های آبجکت جدید را روی آبجکت موجود کپی می‌کند
+                    // توجه: این کار navigation property ها (مثل Games) را کپی نمی‌کند که رفتار مطلوب است
+                    DbContext.Entry(existingLeague).CurrentValues.SetValues(uleague);
+                    updatedCount++;
+                }
+            }
+
+            // 5. ذخیره تمام تغییرات (اعم از Add و Update) در یک تراکنش
+            if (addedCount > 0 || updatedCount > 0)
+            {
+                await DbContext.SaveChangesAsync();
+                message = $"عملیات موفق: {addedCount} کاربر لیگ جدید اضافه شد، {updatedCount} کاربر لیگ به‌روزرسانی شد.";
             }
             else
             {
